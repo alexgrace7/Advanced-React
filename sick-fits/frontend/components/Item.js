@@ -11,38 +11,67 @@ export default class Item extends Component {
     item: PropTypes.object.isRequired,
   };
 
+  handleMouseHover() {
+    this.setState(this.toggleHoverState);
+  }
+
+  toggleHoverState(state) {
+    return {
+      isHovering: !state.isHovering,
+    };
+  }
+
+  constructor() {
+    super()
+    this.state = {
+      isHidden: false
+    }
+  }
+  toggleHidden () {
+    this.setState({
+      isHidden:!this.state.isHidden
+    })
+  }
+
   render() {
     const { item } = this.props;
     return (
       <ItemStyles>
-        {item.image && <img src={item.image} alt={item.title} />}
 
-        <Title>
-          <Link
-            href={{
-              pathname: '/item',
-              query: { id: item.id },
-            }}
+        <div
+          onMouseEnter={this.toggleHidden.bind(this)} 
+          onMouseLeave={this.toggleHidden.bind(this)}
           >
-            <a>{item.title}</a>
+            {this.state.isHidden && <Child/>}
+        
+          <Link href={{
+            pathname: 'item',
+            query: { id: item.id },
+          }}>
+          {item.image && <img src={item.image} alt={item.title} />}
           </Link>
-        </Title>
-        <PriceTag>{formatMoney(item.price)}</PriceTag>
-        <p>{item.description}</p>
 
-        <div className="buttonList">
-          <Link
-            href={{
-              pathname: 'update',
-              query: { id: item.id },
-            }}
-          >
-            <a>Edit ✏️</a>
-          </Link>
-          <button>Add To Cart</button>
-          <button>Delete </button>
+          <div className="buttonList">
+            {/* <Link
+              href={{
+                pathname: 'update',
+                query: { id: item.id },
+              }}
+            > */}
+              <div className='buttonItem buttonTitle'>{item.title}</div>
+            {/* </Link> */}
+            <div className='buttonItem buttonPrice'> {formatMoney(item.price)} </div>
+          </div>
+
         </div>
       </ItemStyles>
     );
   }
 }
+
+
+const Child = () => (
+  <div className="shopHover">
+        SHOP
+    </div>
+)

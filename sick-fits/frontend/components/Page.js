@@ -5,12 +5,15 @@ import Header from './Header';
 import Meta from './Meta';
 
 const theme = {
+  borange: 'rgb(239, 64, 35)',
+  lime: 'rgb(215,223,35)',
+  pink:'rgb(248,177,178)',
   red: '#FF0000',
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
-  maxWidth: '1000px',
+  maxWidth: '1200px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 };
 
@@ -27,8 +30,8 @@ const Inner = styled.div`
 
 injectGlobal`
   @font-face {
-    font-family: 'radnika_next';
-    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
+    font-family: "Oswald", sans-serif;
+    src: url('/static/oswald-sans-serif.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
   }
@@ -43,8 +46,9 @@ injectGlobal`
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
-    line-height: 2;
-    font-family: 'radnika_next';
+    line-height: 45px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
   }
   a {
     text-decoration: none;

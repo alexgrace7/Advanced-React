@@ -1,4 +1,10 @@
 
-import Home from './index';
+import Items from '../components/Items';
 
-export default Home;
+const Shop = props => (
+  <div>
+    <Items />
+  </div>
+);
+
+export default Shop;
